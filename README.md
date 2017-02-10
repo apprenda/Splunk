@@ -46,4 +46,4 @@ This repository will walk you through the steps to set up this integration as we
 - If you encounter any issues, be aware of this Stack Overflow KB article on troubleshooting cipher issues http://stackoverflow.com/questions/42124551/httpwebrequest-from-wcf-service-fails-with-the-request-was-aborted-could-not
 - Now, visit your Splunk instance https://prd-p-uniqueID.cloud.splunk.com/en-US/app/search/search and run a query like `index="apprendalogs"` to view the logs from Apprenda. Notice I am using the index I created earlier
 
-Congratulations, you have just integrated the Apprenda Cloud Platform with the Splunk Operational Intelligence Platform
+**Congratulations, you have just integrated the Apprenda Cloud Platform with the Splunk Operational Intelligence Platform**
