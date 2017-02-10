@@ -41,4 +41,9 @@ This repository will walk you through the steps to set up this integration as we
   - Be aware that searching for this Registry setting in Apprenda will not yield any results. This is a hidden setting once created
 - Your WCF service logforwarder will now start getting logs from the Apprenda Platform
 
+## Integration Steps, Viewing the Logs in Splunk
+- Your logs will automatically start getting pushed from Apprenda into Splunk
+- If you encounter any issues, be aware of this Stack Overflow KB article on troubleshooting cipher issues http://stackoverflow.com/questions/42124551/httpwebrequest-from-wcf-service-fails-with-the-request-was-aborted-could-not
+- Now, visit your Splunk instance https://prd-p-uniqueID.cloud.splunk.com/en-US/app/search/search and run a query like `index="apprendalogs"` to view the logs from Apprenda. Notice I am using the index I created earlier
 
+Congratulations, you have just integrated the Apprenda Cloud Platform with the Splunk Operational Intelligence Platform
