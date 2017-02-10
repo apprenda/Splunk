@@ -6,7 +6,7 @@ This repository will walk you through the steps to set up this integration as we
 ## Code Repository
 - Splunk Add-On, an Apprenda Add-On that allows an operator to define the details of a provisioned Splunk account so that developers can use it inside a guest application
 - LogForwarderExtension WCF Service, An Apprenda WCF service that is built as an extension. It receives all the logs from Apprenda and forwards them to Splunk
-- TestingLoggingExtension_WCF_Call.ps1, a quick PowerShell utility to invoke the Test Interface of the LogAggregator and get some useful statics on the queue that is pushing the log messages to Splunk
+- TestingLoggingExtension_WCF_Call.ps1, a PowerShell utility to invoke the Test Interface of the LogAggregator and get some useful statistics on the queue that is pushing the log messages to Splunk
 
 ## Integration Steps, Setting up Splunk
 - First, go ahead and create a Splunk account, provision an instance and create an `HTTP Event Collector` under "Data Inputs". You can also create an index and tie that index to the HTTP Event Collector. In my case, I created an index called "apprendalogs"
