@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configurationFragment xmlns="urn:Apprenda.ConfigurationFragments-1.0">
+  
+  <ifDoesNotExist path="/configuration/configSections/section[@name='apprenda-logger']">
+    <add parentPath="/configuration/configSections" position="First">
+      <section name="apprenda-logger"
+               type="Apprenda.Services.Logging.Config.ApprendaLoggerCustomSection, SaaSGrid.API, Culture=neutral, PublicKeyToken=null" />
+    </add>
+  </ifDoesNotExist>
+
+  <ifDoesNotExist path="/configuration/apprenda-logger">
+    <add parentPath="/configuration">
+      <apprenda-logger>
+      </apprenda-logger>
+    </add>    
+  </ifDoesNotExist>
+  
+</configurationFragment>

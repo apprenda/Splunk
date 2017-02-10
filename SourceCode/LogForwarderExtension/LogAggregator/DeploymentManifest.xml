@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<appManifest xsi:schemaLocation="http://schemas.apprenda.com/DeploymentManifest http://apprenda.com/schemas/platform/5.0/DeploymentManifest.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.apprenda.com/DeploymentManifest">
+  <!--<applicationServices level="Authorization"/>-->
+  <services>
+    <service name="LogAggregator" scalingType="Automatic" maximumInstanceCount="4" minimumInstanceCount="1">
+      <environmentVariables/>
+    </service>
+  </services>
+</appManifest>
