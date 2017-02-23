@@ -1,0 +1,94 @@
+﻿<configurationFragment xmlns="urn:Apprenda.ConfigurationFragments-1.0">
+
+  <!-- 
+    Only inject spring definitions for file system drivers it they 
+    don't exist in the target file; this allows the target to be able 
+    to override their own implementation for testing purposes.
+  -->
+  <namespaces>
+    <namespace prefix="spr" urn="http://www.springframework.net"/>
+  </namespaces>
+
+  <!-- Setup spring config section -->
+  <ifDoesNotExist path="/configuration/configSections/sectionGroup[@name='spring']">
+    <add parentPath="/configuration/configSections">
+      <sectionGroup name="spring" />
+    </add>
+  </ifDoesNotExist>
+  <ifDoesNotExist path="/configuration/configSections/sectionGroup[@name='spring']/section[@name='context']">
+    <add parentPath="/configuration/configSections/sectionGroup[@name='spring']">
+      <section name="context" type="Spring.Context.Support.ContextHandler, Spring.Core"/>
+    </add>
+  </ifDoesNotExist>
+  <ifDoesNotExist path="/configuration/configSections/sectionGroup[@name='spring']/section[@name='typeAliases']">
+    <add parentPath="/configuration/configSections/sectionGroup[@name='spring']">
+      <section name="typeAliases" type="Spring.Context.Support.TypeAliasesSectionHandler, Spring.Core"/>
+    </add>
+  </ifDoesNotExist>  
+  <ifDoesNotExist path="/configuration/configSections/sectionGroup[@name='spring']/section[@name='objects']">
+    <add parentPath="/configuration/configSections/sectionGroup[@name='spring']">
+      <section name="objects" type="Spring.Context.Support.DefaultSectionHandler, Spring.Core" />
+    </add>
+  </ifDoesNotExist>
+  <ifDoesNotExist path="/configuration/spring/context/resource[@uri='config://spring/objects']">
+    <add parentPath="/configuration/spring/context">
+      <resource uri="config://spring/objects" />
+    </add>
+  </ifDoesNotExist>
+
+  <!--
+  ####
+  ####    SPRING DEFINITIONS FOR PASSWORD TYPES
+  ####
+  -->
+  <!-- Add definitions for Password Encryption Types -->
+  <ifDoesNotExist path="/configuration/spring/spr:objects/spr:object[@id='PasswordEncryptionType-SHA1']">
+    <add parentPath="/configuration/spring/spr:objects">
+      <object id="PasswordEncryptionType-SHA1"
+              type="Apprenda.Business.SHA1Password, Apprenda.Utils" singleton="false"/>
+    </add>
+  </ifDoesNotExist>
+  <ifDoesNotExist path="/configuration/spring/spr:objects/spr:object[@id='PasswordEncryptionType-PLAINTEXT']">
+    <add parentPath="/configuration/spring/spr:objects">
+      <object id="PasswordEncryptionType-PLAINTEXT"
+              type="Apprenda.Business.PlainTextPassword, Apprenda.Utils" singleton="false"/>
+    </add>
+  </ifDoesNotExist>  
+  
+  <!--
+  ####
+  ####    SPRING DEFINITIONS FOR DATA ACCESS OBJETS
+  ####
+  -->
+  <!-- Add definition for country -->
+  <ifDoesNotExist path="/configuration/spring/typeAliases/alias[@name='Country']">
+    <add parentPath="/configuration/spring/typeAliases">
+      <alias name="Country" type="Apprenda.Business.Country, Apprenda.Utils" />
+    </add>
+  </ifDoesNotExist>
+
+  <!-- Add definitions for serialization -->
+  <ifDoesNotExist path="/configuration/spring/spr:objects/spr:object[@id='Apprenda.Utility.Serialization.BinarySerializer']">
+    <add parentPath="/configuration/spring/spr:objects">
+      <object id="Apprenda.Utility.Serialization.BinarySerializer"
+              type="Apprenda.Utility.Serialization.BinarySerializer, Apprenda.Utils"
+              singleton="false" />
+    </add>
+  </ifDoesNotExist>
+
+  <ifDoesNotExist path="/configuration/spring/spr:objects/spr:object[@id='Apprenda.Utility.Serialization.ContractSerializer']">
+    <add parentPath="/configuration/spring/spr:objects">
+      <object id="Apprenda.Utility.Serialization.ContractSerializer"
+              type="Apprenda.Utility.Serialization.ContractSerializer, Apprenda.Utils"
+              singleton="false" />
+    </add>
+  </ifDoesNotExist>
+
+  <ifDoesNotExist path="/configuration/spring/spr:objects/spr:object[@id='Apprenda.Utility.Serialization.ManualXmlSerializer']">
+    <add parentPath="/configuration/spring/spr:objects">
+      <object id="Apprenda.Utility.Serialization.ManualXmlSerializer"
+              type="Apprenda.Utility.Serialization.ManualXmlSerializer, Apprenda.Utils"
+              singleton="false" />
+    </add>
+  </ifDoesNotExist>
+</configurationFragment>

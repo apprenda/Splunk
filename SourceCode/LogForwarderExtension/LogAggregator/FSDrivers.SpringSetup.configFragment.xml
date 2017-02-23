@@ -1,0 +1,64 @@
+﻿<configurationFragment xmlns="urn:Apprenda.ConfigurationFragments-1.0">
+  
+  <!-- 
+    Only inject spring definitions for file system drivers it they 
+    don't exist in the target file; this allows the target to be able 
+    to override their own implementation for testing purposes.
+  -->
+  <namespaces>
+    <namespace prefix="spr" urn="http://www.springframework.net"/>
+  </namespaces>
+  
+  <!-- First insure that spring exists and if not create it -->
+  <ifDoesNotExist path="/configuration/configSections/sectionGroup[@name='spring']">
+    
+    <add parentPath="/configuration/configSections">
+      <sectionGroup name="spring">
+        <section name="context" type="Spring.Context.Support.ContextHandler, Spring.Core"/>
+        <section name="objects" type="Spring.Context.Support.DefaultSectionHandler, Spring.Core" />
+      </sectionGroup>
+    </add>
+
+    <add parentPath="/configuration">
+      <spring>
+
+        <context>
+          <resource uri="config://spring/objects"/>
+        </context>
+
+        <objects xmlns="http://www.springframework.net"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://www.springframework.net http://www.springframework.net/xsd/spring-objects.xsd" />
+      </spring>
+    </add>
+         
+  </ifDoesNotExist>
+
+  <!-- Add definition for zip driver -->
+  <ifDoesNotExist path="/configuration/spring/spr:objects/spr:object[@id='Apprenda.FileSystem-zip']">
+    <add parentPath="/configuration/spring/spr:objects">
+      <object id="Apprenda.FileSystem-zip"
+              type="Apprenda.FileSystem.Zip.ZipDriver, Apprenda.Utils"
+              singleton="false" />
+    </add>
+  </ifDoesNotExist>
+
+  <!-- Add definition for memory driver -->
+  <ifDoesNotExist path="/configuration/spring/spr:objects/spr:object[@id='Apprenda.FileSystem-memory']">
+    <add parentPath="/configuration/spring/spr:objects">
+      <object id="Apprenda.FileSystem-memory"
+              type="Apprenda.FileSystem.Memory.MemoryDriver, Apprenda.Utils"
+              singleton="false" />
+    </add>
+  </ifDoesNotExist>
+
+  <!-- Add definition for disk driver -->
+  <ifDoesNotExist path="/configuration/spring/spr:objects/spr:object[@id='Apprenda.FileSystem-disk']">
+    <add parentPath="/configuration/spring/spr:objects">
+      <object id="Apprenda.FileSystem-disk"
+              type="Apprenda.FileSystem.DiskDriver, Apprenda.Utils"
+              singleton="false" />
+    </add>
+  </ifDoesNotExist>
+  
+</configurationFragment>

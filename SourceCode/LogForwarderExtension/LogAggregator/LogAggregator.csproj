@@ -72,6 +72,10 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="antlr.runtime, Version=2.7.6.2, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <HintPath>..\packages\Apprenda.Spring.Core.1.1.2.20125\lib\net35\antlr.runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Apprenda.Execution.CallContextStorage, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
@@ -79,12 +83,24 @@
       <HintPath>..\packages\Apprenda.Utils.6.6.3\lib\net45\Apprenda.Utils.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Common.Logging, Version=1.2.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e">
+      <HintPath>..\packages\Apprenda.Spring.Core.1.1.2.20125\lib\net35\Common.Logging.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.2-beta2\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Pri.LongPath, Version=1.2.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Apprenda.Pri.LongPath.1.2.2\lib\net45\Pri.LongPath.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="SaaSGrid.API, Version=6.6.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\SaaSGrid.API.6.6.2\lib\net45\SaaSGrid.API.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Spring.Core, Version=1.1.2.20125, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <HintPath>..\packages\Apprenda.Spring.Core.1.1.2.20125\lib\net35\Spring.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -155,9 +171,12 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Apprenda.Logging.configFragment.xml" />
+    <Content Include="Apprenda.Utils.SpringSetup.configFragment.xml" />
     <Content Include="DeploymentManifest.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="FSDrivers.SpringSetup.configFragment.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Target Name="AfterBuild" Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
