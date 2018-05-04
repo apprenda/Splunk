@@ -38,7 +38,7 @@ This repository will walk you through the steps to set up this integration as we
   - It is recommended that WCF services receiving logs from the Platform should use the Authorized User Access Model. This access level will make sure that only authorized and authenticated entities can push logs to the WCF service
   - If you have any more questions about hardening your WCF service contact your Apprenda support representative
 - Once you have pushed your service to Sandbox or Published stage level, visit the Apprenda Operator Portal for the last configuration piece. As per the instuctions in the Apprenda Extensions page, you need to instruct Apprenda which WCF endpoint should receive the logs
-- Visit the Platform Registry and create a new Registry Setting called `Apprenda.Logging.ExternalServiceAppVersion`. In the value field, enter the name and version of the application you just created. For example: `logforwarder(v1)/LogService`. It is important to remember that if you version your application to v2, you need to come back and update this Registry setting.
+- Visit the Platform Registry and create a new Registry Setting called `Telemetry.Logging.ForwardingServiceExtensionVersions`. In the value field, enter the name and version of the application you just created. For example: `logforwarder(v1)/LogService`. It is important to remember that if you version your application to v2, you need to come back and update this Registry setting.
   - Be aware that searching for this Registry setting in Apprenda will not yield any results. This is a hidden setting once created
 - Your WCF service logforwarder will now start getting logs from the Apprenda Platform
 
